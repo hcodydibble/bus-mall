@@ -28,3 +28,12 @@ for (var i = 0; i < theImages.length; i++){
   var linkName = 'img/' + imageName;
   productArray.push(new ProductImage(imageName,linkName));
 }
+
+for (var j = 0; j < 3; j++){
+  var randImg = productArray[randomNum()];
+  currentDisplay.push(randImg);
+}
+
+leftImg.setAttribute('src',currentDisplay[0].link);
+centerImg.setAttribute('src',currentDisplay[1].link);
+rightImg.setAttribute('src',currentDisplay[2].link);
