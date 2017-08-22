@@ -66,8 +66,6 @@ function donJuan(event) {
       console.log(voteCount);
       productArray[t].clicked++;
       voteCount++;
-      switchDisplayArrays();
-      makeDatShit();
     }else if (voteCount === maxClicks){
       leftClick.removeEventListener('click',donJuan);
       centerClick.removeEventListener('click',donJuan);
@@ -76,6 +74,8 @@ function donJuan(event) {
       done.innerText = 'You\'re finished. The test is over. Go home.';
     }
   }
+  switchDisplayArrays();
+  makeDatShit();
 }
 leftClick.addEventListener('click',donJuan);
 centerClick.addEventListener('click',donJuan);
