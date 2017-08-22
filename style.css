@@ -1,5 +1,4 @@
-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+#img1, #img2, #img3{
+  float: left;
+  width: 33%;
 }

@@ -4,9 +4,8 @@ var theImages = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jp
   'cthulhu.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png',
   'tauntaun.jpg','unicorn.jpg','usb.gif','water-can.jpg','wine-glass.jpg'];
 var imgHolder = document.getElementById('imgHolder');
-var leftImg = document.getElementById('img1');
-var centerImg = document.getElementById('img2');
-var rightImg = document.getElementById('img3');
+// var leftImg = document.getElementsByTagName('img')[0];
+// var rightImg = document.getElementsByTagName('img')[2];
 
 var imgClicks = 0;
 var productArray = [];
@@ -48,24 +47,37 @@ function switchDisplayArrays(){
 }
 
 function makeDatShit(){
-  getRandImg(leftImg);
-  getRandImg(centerImg);
-  getRandImg(rightImg);
+  getRandImg(img1.children[0]);
+  getRandImg(img2.children[0]);
+  getRandImg(img3.children[0]);
   productArray[currentDisplay[0]].displayed++;
   productArray[currentDisplay[1]].displayed++;
   productArray[currentDisplay[2]].displayed++;
 }
 makeDatShit();
 
+var maxClicks = 0;
+var leftClick = document.getElementById('img1');
+var centerClick = document.getElementById('img2');
+var rightClick = document.getElementById('img3');
+
 function donJuan(event) {
-  if (imgClicks < 24){
-    imgClicks++;
-    switchDisplayArrays();
-    makeDatShit();
-  }else{
-    imgHolder.removeEventListener('click',donJuan);
-    var done = document.getElementById('done');
-    done.innerText = 'You\'re finished. The test is over. Go home.';
+  for (var t = 0; t < productArray.length; t++){
+    if (productArray[t].id === event.target.id && maxClicks < 25){
+      productArray[t].clicked++;
+      maxClicks++;
+      switchDisplayArrays();
+      makeDatShit();
+    }else if (maxClicks === 25){
+      leftImg.removeEventListener('click',donJuan);
+      centerImg.removeEventListener('click',donJuan);
+      rightImg.removeEventListener('click',donJuan);
+      var done = document.getElementById('done');
+      done.innerText = 'You\'re finished. The test is over. Go home.';
+    }
   }
 }
-imgHolder.addEventListener('click',donJuan);
+// imgHolder.addEventListener('click',donJuan);
+leftClick.addEventListener('click',donJuan);
+centerClick.addEventListener('click',donJuan);
+rightClick.addEventListener('click',donJuan);
