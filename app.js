@@ -50,3 +50,4 @@ function makeDatShit(){
   getRandImg(centerImg);
   getRandImg(rightImg);
 }
+makeDatShit();
