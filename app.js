@@ -19,6 +19,7 @@ function randomNum(){
 function ProductImage(name,link,id){
   this.name = name;
   this.link = link;
+  this.id = id;
   this.clicked = 0;
   this.displayed = 0;
 }
@@ -26,7 +27,7 @@ function ProductImage(name,link,id){
 for (var i = 0; i < theImages.length; i++){
   var imageName = theImages[i].slice(0,-4);
   var linkName = 'img/' + theImages[i];
-  productArray.push(new ProductImage(imageName,linkName));
+  productArray.push(new ProductImage(imageName,linkName,imageName));
 }
 
 function getRandImg(image){
@@ -64,15 +65,16 @@ var rightClick = document.getElementById('img3');
 function donJuan(event) {
   for (var t = 0; t < productArray.length; t++){
     if (productArray[t].id === event.target.id && maxClicks < 25){
+      console.log('clicked');
       productArray[t].clicked++;
       maxClicks++;
       switchDisplayArrays();
       makeDatShit();
     }else if (maxClicks === 25){
-      leftImg.removeEventListener('click',donJuan);
-      centerImg.removeEventListener('click',donJuan);
-      rightImg.removeEventListener('click',donJuan);
-      var done = document.getElementById('done');
+      leftClick.removeEventListener('click',donJuan);
+      centerClick.removeEventListener('click',donJuan);
+      rightClick.removeEventListener('click',donJuan);
+      var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
     }
   }
