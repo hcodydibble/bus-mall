@@ -60,6 +60,8 @@ function donJuan(event) {
     makeDatShit();
   }else{
     imgHolder.removeEventListener('click',donJuan);
+    var done = document.getElementById('done');
+    done.innerText = 'You\'re finished. The test is over. Go home.';
   }
 }
 imgHolder.addEventListener('click',donJuan);
