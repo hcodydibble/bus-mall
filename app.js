@@ -8,6 +8,7 @@ var leftImg = document.getElementById('img1');
 var centerImg = document.getElementById('img2');
 var rightImg = document.getElementById('img3');
 
+var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
@@ -51,3 +52,14 @@ function makeDatShit(){
   getRandImg(rightImg);
 }
 makeDatShit();
+
+function donJuan(event) {
+  if (imgClicks < 24){
+    imgClicks++;
+    switchDisplayArrays();
+    makeDatShit();
+  }else{
+    imgHolder.removeEventListener('click',donJuan);
+  }
+}
+imgHolder.addEventListener('click',donJuan);
