@@ -24,7 +24,7 @@ function ProductImage(name,link){
 }
 
 for (var i = 0; i < theImages.length; i++){
-  var imageName = theImages[i].slice(0,-4);
+  var imageName = theImages[i];
   var linkName = 'img/' + theImages[i];
   productArray.push(new ProductImage(imageName,linkName));
 }
@@ -40,24 +40,13 @@ function createRandomImage(image){
   currentDisplay.push(randNum);
 }
 
+function switchDisplayArrays(){
+  previousDisplay = currentDisplay;
+  currentDisplay = [];
+}
+
 function makeDatShit(){
   createRandomImage(leftImg);
   createRandomImage(centerImg);
   createRandomImage(rightImg);
 }
-
-function checkYourWork(event){
-  makeDatShit();
-  var foo = 0;
-  while (foo < previousDisplay.length){
-    for (var i = 0; i < currentDisplay.length; i++){
-      if (currentDisplay[i] === previousDisplay[foo]) {
-        currentDisplay = [];
-        checkYourWork();
-      }
-    }
-    j++;
-  }
-}
-
-imgHolder.addEventListener('click',checkYourWork());
