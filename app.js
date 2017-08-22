@@ -29,7 +29,7 @@ for (var i = 0; i < theImages.length; i++){
   productArray.push(new ProductImage(imageName,linkName));
 }
 
-function createRandomImage(image){
+function getRandImg(image){
   var randNum = randomNum();
   for (var j = 0; j < currentDisplay.length; j++){
     while (randNum === currentDisplay[j]) {
@@ -46,7 +46,7 @@ function switchDisplayArrays(){
 }
 
 function makeDatShit(){
-  createRandomImage(leftImg);
-  createRandomImage(centerImg);
-  createRandomImage(rightImg);
+  getRandImg(leftImg);
+  getRandImg(centerImg);
+  getRandImg(rightImg);
 }
