@@ -63,7 +63,6 @@ var rightClick = document.getElementById('img3');
 function donJuan(event) {
   for (var t = 0; t < productArray.length; t++){
     if (productArray[t].id === event.target.id && voteCount < maxClicks){
-      console.log(voteCount);
       productArray[t].clicked++;
       voteCount++;
     }else if (voteCount === maxClicks){
