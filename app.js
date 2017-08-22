@@ -29,7 +29,35 @@ for (var i = 0; i < theImages.length; i++){
   productArray.push(new ProductImage(imageName,linkName));
 }
 
-for (var j = 0; j < 3; j++){
-  var randImg = productArray[randomNum()];
-  currentDisplay.push(randImg);
+function createRandomImage(image){
+  var randNum = randomNum();
+  for (var j = 0; j < currentDisplay.length; j++){
+    while (randNum === currentDisplay[j]) {
+      randNum = randomNum();
+    }
+  }
+  image.src = productArray[randNum].link;
+  currentDisplay.push(randNum);
 }
+
+function makeDatShit(){
+  createRandomImage(leftImg);
+  createRandomImage(centerImg);
+  createRandomImage(rightImg);
+}
+
+function checkYourWork(event){
+  makeDatShit();
+  var foo = 0;
+  while (foo < previousDisplay.length){
+    for (var i = 0; i < currentDisplay.length; i++){
+      if (currentDisplay[i] === previousDisplay[foo]) {
+        currentDisplay = [];
+        checkYourWork();
+      }
+    }
+    j++;
+  }
+}
+
+imgHolder.addEventListener('click',checkYourWork());
