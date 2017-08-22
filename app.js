@@ -25,7 +25,7 @@ function ProductImage(name,link){
 }
 
 for (var i = 0; i < theImages.length; i++){
-  var imageName = theImages[i];
+  var imageName = theImages[i].slice(0,-4);
   var linkName = 'img/' + theImages[i];
   productArray.push(new ProductImage(imageName,linkName));
 }
@@ -50,6 +50,9 @@ function makeDatShit(){
   getRandImg(leftImg);
   getRandImg(centerImg);
   getRandImg(rightImg);
+  productArray[currentDisplay[0]].displayed++;
+  productArray[currentDisplay[1]].displayed++;
+  productArray[currentDisplay[2]].displayed++;
 }
 makeDatShit();
 
