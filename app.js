@@ -17,7 +17,7 @@ function randomNum(){
   return Math.floor(Math.random() * theImages.length);
 }
 
-function ProductImage(name,link){
+function ProductImage(name,link,id){
   this.name = name;
   this.link = link;
   this.clicked = 0;
@@ -38,6 +38,7 @@ function getRandImg(image){
     }
   }
   image.src = productArray[randNum].link;
+  image.id = productArray[randNum].name;
   currentDisplay.push(randNum);
 }
 
