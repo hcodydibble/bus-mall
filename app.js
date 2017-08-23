@@ -8,6 +8,7 @@ var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
+var clickedArray = [];
 var maxClicks = 25;
 
 function randomNum(){
@@ -69,8 +70,57 @@ function donJuan(event) {
       leftClick.removeEventListener('click',donJuan);
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
+      for(var i = 0; i < productArray.length; i++){
+        if (productArray[i].clicked > 0 && !clickedArray.includes(productArray[i])){
+          clickedArray.push(productArray[i]);
+        }
+      }
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
+      new Chart(canvas,chartConfig);
+      var chartConfig = {
+        type: 'bar',
+        data: {
+          labels: ['bag','banana','bathroom','boots','breakfast','bubblegum','chair',
+            'cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep',
+            'tauntaun','unicorn','usb','water-can','wine-glass'],
+          datasets: [{
+            label: '# of Votes',
+            data: [1,2,3,4,5,6,7,8,9],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Some stuff and some junk'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      };
+
     }
   }
   switchDisplayArrays();
