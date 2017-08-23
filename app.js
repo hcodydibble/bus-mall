@@ -8,7 +8,9 @@ var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
+var clickedArray = [];
 var maxClicks = 25;
+var canvas = document.getElementById('canvas').getContext('2d');
 
 function randomNum(){
   return Math.floor(Math.random() * theImages.length);
@@ -69,8 +71,54 @@ function donJuan(event) {
       leftClick.removeEventListener('click',donJuan);
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
+      for(var i = 0; i < productArray.length; i++){
+        if (productArray[i].displayed > 0 && !clickedArray.includes(productArray[i].name)){
+          clickedArray.push(productArray[i].name);
+        }
+      }
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
+      var chartConfig = {
+        type: 'horizontalBar',
+        data: {
+          labels: ['bag','banana','bathroom','boots','breakfast','bubblegum','chair',
+            'cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep',
+            'tauntaun','unicorn','usb','water-can','wine-glass'],
+          datasets: [{
+            label: 'Number of Votes',
+            data: [productArray[0].clicked,productArray[1].clicked,productArray[2].clicked,productArray[3].clicked,productArray[4].clicked,productArray[5].clicked,productArray[6].clicked,productArray[7].clicked,
+              productArray[8].clicked,productArray[9].clicked,productArray[10].clicked,productArray[11].clicked,productArray[12].clicked,
+              productArray[13].clicked,productArray[14].clicked,productArray[15].clicked,productArray[16].clicked,productArray[17].clicked,productArray[18].clicked,productArray[19].clicked],
+            backgroundColor: [
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)'
+            ],
+            borderColor: [
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)'
+            ],
+            borderWidth: 3
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Here are your results!'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      };
+
+      var myChart = new Chart(canvas, chartConfig);
     }
   }
   switchDisplayArrays();
