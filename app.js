@@ -71,22 +71,19 @@ function donJuan(event) {
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
       for(var i = 0; i < productArray.length; i++){
-        if (productArray[i].clicked > 0 && !clickedArray.includes(productArray[i])){
-          clickedArray.push(productArray[i]);
+        if (productArray[i].clicked > 0 && !clickedArray.includes(productArray[i].name)){
+          clickedArray.push(productArray[i].name);
         }
       }
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
-      new Chart(canvas,chartConfig);
       var chartConfig = {
         type: 'bar',
         data: {
-          labels: ['bag','banana','bathroom','boots','breakfast','bubblegum','chair',
-            'cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep',
-            'tauntaun','unicorn','usb','water-can','wine-glass'],
+          label: [clickedArray],
           datasets: [{
             label: '# of Votes',
-            data: [1,2,3,4,5,6,7,8,9],
+            data: [productArray.clicked],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -120,7 +117,7 @@ function donJuan(event) {
           }
         }
       };
-
+      new Chart(canvas,chartConfig);
     }
   }
   switchDisplayArrays();
