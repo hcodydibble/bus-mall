@@ -10,6 +10,7 @@ var currentDisplay = [];
 var previousDisplay = [];
 var clickedArray = [];
 var maxClicks = 25;
+var canvas = document.getElementById('canvas').getContext('2d');
 
 function randomNum(){
   return Math.floor(Math.random() * theImages.length);
@@ -78,35 +79,34 @@ function donJuan(event) {
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
       var chartConfig = {
-        type: 'bar',
+        type: 'horizontalBar',
         data: {
-          label: [clickedArray],
+          labels: ['bag','banana','bathroom','boots','breakfast','bubblegum','chair',
+            'cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep',
+            'tauntaun','unicorn','usb','water-can','wine-glass'],
           datasets: [{
-            label: '# of Votes',
-            data: [productArray.clicked],
+            label: 'Number of Votes',
+            data: [productArray[0].clicked,productArray[1].clicked,productArray[2].clicked,productArray[3].clicked,productArray[4].clicked,productArray[5].clicked,productArray[6].clicked,productArray[7].clicked,
+              productArray[8].clicked,productArray[9].clicked,productArray[10].clicked,productArray[11].clicked,productArray[12].clicked,
+              productArray[13].clicked,productArray[14].clicked,productArray[15].clicked,productArray[16].clicked,productArray[17].clicked,productArray[18].clicked,productArray[19].clicked],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
+              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)'
             ],
             borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
+              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)'
             ],
-            borderWidth: 1
+            borderWidth: 3
           }]
         },
         options: {
           title: {
             display: true,
-            text: 'Some stuff and some junk'
+            text: 'Here are your results!'
           },
           scales: {
             yAxes: [{
@@ -117,7 +117,8 @@ function donJuan(event) {
           }
         }
       };
-      new Chart(canvas,chartConfig);
+
+      var myChart = new Chart(canvas, chartConfig);
     }
   }
   switchDisplayArrays();
