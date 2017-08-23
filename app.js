@@ -72,7 +72,7 @@ function donJuan(event) {
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
       for(var i = 0; i < productArray.length; i++){
-        if (productArray[i].clicked > 0 && !clickedArray.includes(productArray[i].name)){
+        if (productArray[i].displayed > 0 && !clickedArray.includes(productArray[i].name)){
           clickedArray.push(productArray[i].name);
         }
       }
