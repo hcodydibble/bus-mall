@@ -6,6 +6,9 @@
   width: 33%;
   margin-top: 6em;
 }
+.clearfix{
+  clear: both;
+}
 img{
   transition-property: border-radius, background-color;
   transition-duration: 0s;
@@ -40,4 +43,8 @@ p{
 }
 section{
   text-align: center;
+}
+li{
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.4em;
 }
