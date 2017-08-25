@@ -3,8 +3,6 @@
 var theImages = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jpg','bubblegum.jpg','chair.jpg',
   'cthulhu.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png',
   'tauntaun.jpg','unicorn.jpg','usb.gif','water-can.jpg','wine-glass.jpg'];
-var imgHolder = document.getElementById('imgHolder');
-var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
@@ -16,7 +14,7 @@ function updateProduct() {
   try {
     productArray = JSON.parse(localStorage.productName);
   } catch (error){
-    console.log('');
+    console.log(' ');
   }
 }
 
