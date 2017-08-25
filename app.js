@@ -86,7 +86,7 @@ function donJuan(event) {
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
       var chartConfig = {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {
           labels: ['bag','banana','bathroom','boots','breakfast','bubblegum','chair',
             'cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep',
@@ -97,15 +97,11 @@ function donJuan(event) {
               productArray[8].clicked,productArray[9].clicked,productArray[10].clicked,productArray[11].clicked,productArray[12].clicked,
               productArray[13].clicked,productArray[14].clicked,productArray[15].clicked,productArray[16].clicked,productArray[17].clicked,productArray[18].clicked,productArray[19].clicked],
             backgroundColor: [
-              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
-              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
-              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)',
-              'rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)','rgba(1, 221, 221, 0.3)'
+              'lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue','lightblue'
             ],
             borderColor: [
-              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
-              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)',
-              'rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)','rgb(33, 233, 8)'
+              'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)',
+              'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)', 'rgb(108, 108, 108)',
             ],
             borderWidth: 3
           }]
