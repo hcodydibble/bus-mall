@@ -4,11 +4,11 @@ var theImages = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jp
   'cthulhu.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png',
   'tauntaun.jpg','unicorn.jpg','usb.gif','water-can.jpg','wine-glass.jpg'];
 var imgHolder = document.getElementById('imgHolder');
+var list = document.getElementById('list');
 var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
-var clickedArray = [];
 var maxClicks = 25;
 var canvas = document.getElementById('canvas').getContext('2d');
 
@@ -83,11 +83,6 @@ function donJuan(event) {
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
       localStorage.productName = JSON.stringify(productArray);
-      for(var i = 0; i < productArray.length; i++){
-        if (productArray[i].displayed > 0 && !clickedArray.includes(productArray[i].name)){
-          clickedArray.push(productArray[i].name);
-        }
-      }
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
       var chartConfig = {
@@ -131,6 +126,12 @@ function donJuan(event) {
       };
 
       var myChart = new Chart(canvas, chartConfig);
+      for (var j = 0; j < productArray.length; j++) {
+        var li = document.createElement('li');
+        li.innerText = productArray[j].name + ' was displayed ' + productArray[j].displayed + ' times. ';
+        list.appendChild(li);
+      }
+      break;
     }
   }
   switchDisplayArrays();
