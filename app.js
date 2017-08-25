@@ -69,8 +69,15 @@ function donJuan(event) {
       leftClick.removeEventListener('click',donJuan);
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
+      var list = document.getElementById('list');
       var done = document.getElementById('imgHolder');
       done.innerText = 'You\'re finished. The test is over. Go home.';
+      for (var j = 0; j < productArray.length; j++) {
+        var li = document.createElement('li');
+        li.innerText = productArray[j].name + ' was displayed ' + productArray[j].displayed + ' times. ';
+        list.appendChild(li);
+      }
+      break;
     }
   }
   switchDisplayArrays();
