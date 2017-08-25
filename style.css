@@ -6,11 +6,16 @@
   width: 33%;
   margin-top: 6em;
 }
+img{
+  transition-property: border-radius, background-color;
+  transition-duration: 0s;
+}
 img:hover{
   border-style: solid;
   border-color: rgb(159, 104, 32);
   border-width: 2px;
   cursor: pointer;
+  border-radius: 2em;
 }
 body{
   background-color: rgb(177, 142, 89);
