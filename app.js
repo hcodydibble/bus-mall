@@ -82,6 +82,7 @@ function donJuan(event) {
       leftClick.removeEventListener('click',donJuan);
       centerClick.removeEventListener('click',donJuan);
       rightClick.removeEventListener('click',donJuan);
+
       localStorage.productName = JSON.stringify(productArray);
       for(var i = 0; i < productArray.length; i++){
         if (productArray[i].displayed > 0 && !clickedArray.includes(productArray[i].name)){
