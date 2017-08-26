@@ -54,6 +54,20 @@ function getRandImg(image){
   currentDisplay.push(randNum);
 }
 
+function reallyRandomizeIt(){
+  makeDatShit();
+  var i = 0;
+  while (i < previousDisplay.length){
+    for(var j = 0; j < currentDisplay.length; j++){
+      if (currentDisplay[j] === previousDisplay[i]){
+        currentDisplay = [];
+        reallyRandomizeIt();
+      }
+    }
+    i++;
+  }
+}
+
 function switchDisplayArrays(){
   previousDisplay = currentDisplay;
   currentDisplay = [];
@@ -122,16 +136,11 @@ function donJuan(event) {
       };
 
       var myChart = new Chart(canvas, chartConfig);
-      for (var j = 0; j < productArray.length; j++) {
-        var li = document.createElement('li');
-        li.innerText = productArray[j].name + ' was displayed ' + productArray[j].displayed + ' times. ';
-        list.appendChild(li);
-      }
       break;
     }
   }
+  reallyRandomizeIt();
   switchDisplayArrays();
-  makeDatShit();
 }
 leftClick.addEventListener('click',donJuan);
 centerClick.addEventListener('click',donJuan);
