@@ -54,6 +54,20 @@ function getRandImg(image){
   currentDisplay.push(randNum);
 }
 
+function reallyRandomizeIt(){
+  makeDatShit();
+  var i = 0;
+  while (i < previousDisplay.length){
+    for(var j = 0; j < currentDisplay.length; j++){
+      if (currentDisplay[j] === previousDisplay[i]){
+        currentDisplay = [];
+        reallyRandomizeIt();
+      }
+    }
+    i++;
+  }
+}
+
 function switchDisplayArrays(){
   previousDisplay = currentDisplay;
   currentDisplay = [];
@@ -134,8 +148,8 @@ function donJuan(event) {
       break;
     }
   }
+  reallyRandomizeIt();
   switchDisplayArrays();
-  makeDatShit();
 }
 leftClick.addEventListener('click',donJuan);
 centerClick.addEventListener('click',donJuan);
