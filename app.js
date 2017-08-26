@@ -4,8 +4,6 @@ var theImages = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jp
   'cthulhu.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png',
   'tauntaun.jpg','unicorn.jpg','usb.gif','water-can.jpg','wine-glass.jpg'];
 var imgHolder = document.getElementById('imgHolder');
-var list = document.getElementById('list');
-var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
@@ -52,6 +50,20 @@ function getRandImg(image){
   image.src = productArray[randNum].link;
   image.id = productArray[randNum].name;
   currentDisplay.push(randNum);
+}
+
+function reallyRandomizeIt(){
+  makeDatShit();
+  var i = 0;
+  while (i < previousDisplay.length){
+    for(var j = 0; j < currentDisplay.length; j++){
+      if (currentDisplay[j] === previousDisplay[i]){
+        currentDisplay = [];
+        reallyRandomizeIt();
+      }
+    }
+    i++;
+  }
 }
 
 function switchDisplayArrays(){
@@ -122,16 +134,11 @@ function donJuan(event) {
       };
 
       var myChart = new Chart(canvas, chartConfig);
-      for (var j = 0; j < productArray.length; j++) {
-        var li = document.createElement('li');
-        li.innerText = productArray[j].name + ' was displayed ' + productArray[j].displayed + ' times. ';
-        list.appendChild(li);
-      }
       break;
     }
   }
+  reallyRandomizeIt();
   switchDisplayArrays();
-  makeDatShit();
 }
 leftClick.addEventListener('click',donJuan);
 centerClick.addEventListener('click',donJuan);
