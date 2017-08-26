@@ -5,7 +5,6 @@ var theImages = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jp
   'tauntaun.jpg','unicorn.jpg','usb.gif','water-can.jpg','wine-glass.jpg'];
 var imgHolder = document.getElementById('imgHolder');
 var list = document.getElementById('list');
-var imgClicks = 0;
 var productArray = [];
 var currentDisplay = [];
 var previousDisplay = [];
